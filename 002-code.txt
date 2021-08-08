@@ -1,0 +1,33 @@
+// C++ code
+
+const int ledgreen=13;			//set the ledgreen pin to 13.
+const int sensor=2;			//set the distance arduino pin to 2
+bool sensor_value;
+
+void setup()
+{
+  Serial.begin(9600); 				//serial monitor initialize
+  pinMode(ledgreen, OUTPUT);		//led green as the output
+  pinMode(sensor,INPUT);
+}
+void loop()
+{ 
+  sensor_value=digitalRead(sensor);			//reads the sensor value and stores it
+  if (sensor_value==true)					//sensor is true meaning HIGH   
+  {
+  Serial.print("Object in motion!!!");		//prints the sensor value
+  delay(1000);
+  digitalWrite(13, HIGH);					//prints the led is on when its HIGH
+  Serial.println();
+  Serial.print("led green is on");
+  Serial.println();	
+  delay(1000); // Wait for 1000 millisecond(s)	
+  }
+    else
+    {
+      digitalWrite(13, LOW);
+  	  delay(2000); // Wait for 2000 millisecond(s)
+    }
+}
+
+
